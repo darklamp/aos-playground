@@ -17,8 +17,8 @@ int main() {
 
   /* Block the signals in the waitset list
    * NOTE: SIG_BLOCK means "add signals in waitset to the already blocked ones"
-   * NOTE: the other signals will still have default behaviour, aka terminate
-   * the program
+   * NOTE: blocking a signal is necessary for sigtimedwait, else once the signal
+   * is received, the program will just close
    */
   sigprocmask(SIG_BLOCK, &waitset, NULL);
 
@@ -35,7 +35,7 @@ int main() {
 
   if (result < 0) {
     int errnum = errno;
-    char * error_mess = malloc(sizeof(char) * 100);
+    char *error_mess = malloc(sizeof(char) * 100);
     strerror_r(errnum, error_mess, 99);
     printf("\nTimeout. %d\n", result);
     printf("Error: %s", error_mess);
