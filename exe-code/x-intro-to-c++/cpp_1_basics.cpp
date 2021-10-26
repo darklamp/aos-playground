@@ -1,4 +1,4 @@
-#include <iostream>
+#include <iostream> // aka stdio
 #include <string>
 
 
@@ -16,6 +16,8 @@ void pass_by_reference_function(std::string &str) {
 
 int main() {
 
+	// std is a namespace, which is smth in which anything is wrappable (functions, objects, ..)
+	// useful when there are functions with the same names etc..
 	std::cout << "Hello world!" << std::endl;
 		
 	// using namespace std;	// Not the best practice
@@ -60,6 +62,8 @@ int main() {
 	std::cin >> N;
 	
 	int *my_vector = new int[N];
+
+	std::cout << N << std::endl;
 	// Do something...
 	delete [] my_vector;
 	

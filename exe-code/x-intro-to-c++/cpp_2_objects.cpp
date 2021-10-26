@@ -4,12 +4,12 @@
 class Sensor {
 
 public:
-	Sensor(int id, const std::string &name) : id(id), name(name) {
+	Sensor(int _id, const std::string &_name) : id(_id), name(_name) {
 		// ... Any code you need in the constructor goes here ...
 		total_sensors++;
 	}
 	
-	virtual ~Sensor() {
+	virtual ~Sensor() { // destructor
 		// Do something in the destructor...
 		total_sensors--;
 	}
@@ -18,11 +18,11 @@ public:
 		return this->name;	// or this->id
 	}
 	
-	void set_name(const std::string &name) {
+	void set_name(const std::string &name) { // const anche qua perchè non modifico name (non obbligatorio ma meglio)
 		this->name = name;
 	}
 	
-	int get_id() const;
+	int get_id() const; // importante const quando non si modifica nulla
 
 	static int get_nr_sensors() {
 		return total_sensors;
@@ -44,11 +44,12 @@ private:
 
 int Sensor::total_sensors = 0;
 
-int Sensor::get_id() const {
+int Sensor::get_id() const { // importante const quando non si modifica nulla
 	return id;	// or this->id
 }
 
 class TemperatureSensor : public Sensor {
+	//nota : c++ defaulta a private, quindi importante mettere public ofc
 public:
 	TemperatureSensor(int id, const std::string &name) : Sensor(id, name) {
 		this->name = "[TEMP] " + this->name;
@@ -59,6 +60,7 @@ public:
 		this->temperature = 20.5;
 	}*/
 
+	// virtual means that it's overridable by classes who extend this method !!!
 	virtual const char * get_class_name() const {
 		return "TemperatureSensor";
 	}
