@@ -39,6 +39,7 @@ int main()
             return 1;
         }
         printf("Sent a message with priority=%d\n", priorities[i]);
+        printf("%d", i);
     }
     mq_close(mqd);
     return 0;

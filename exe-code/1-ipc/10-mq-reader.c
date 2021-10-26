@@ -39,6 +39,7 @@ int main()
     }
     printf("No messages left in the queue.\n");
     mq_close(mqd);
+    mq_unlink(MSGQUEUE_NAME);
     return 0;    
     
 }

@@ -13,6 +13,9 @@ int main() {
   sa.sa_handler = &my_handler;
   sigaction(SIGINT, &sa, NULL);
 
+  /* Masking the signal makes it so that the program ignores the SIGINT signal,
+   * so the "my_handler" function doesn't get called */
+
   sigset_t my_sig_set;                       // 2nd part
   sigemptyset(&my_sig_set);                  // 2nd part
   sigaddset(&my_sig_set, SIGINT);            // 2nd part
