@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <functional>
+#include <memory>
 #include <thread>
 #include <list>
 #include <chrono>
@@ -60,6 +61,9 @@ void benchmark(function<void ()> f)
 
 int main()
 {
-	cout<<"parallel   "; benchmark(bind(parallelFibonacci,10));
-	cout<<"sequential "; benchmark(bind(sequentialFibonacci,10));
+	int number;
+	cout << "Number please" << endl;
+	cin >> number;
+	cout<<"parallel   "; benchmark(bind(parallelFibonacci,number));
+	cout<<"sequential "; benchmark(bind(sequentialFibonacci,number));
 }

@@ -5,6 +5,7 @@
 #include <atomic>
 #include <thread>
 
+// NB : this is NOT a template class, so implementations are not in here
 class ActiveObject
 {
 public:

@@ -6,6 +6,7 @@
 #include <mutex>
 #include <condition_variable>
 
+// NB: since this is a template class, its implementation has to go in the header file!
 template<typename T>
 class SynchronizedQueue
 {
@@ -19,7 +20,9 @@ public:
     size_t size();
 
 private:
+    // This forbids the copy operation
     SynchronizedQueue(const SynchronizedQueue &)=delete;
+    // This forbids the = operator from being used (it tells the compiler not to allow it)
     SynchronizedQueue & operator=(const SynchronizedQueue &)=delete;
     
     std::list<T> queue;

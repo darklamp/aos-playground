@@ -36,6 +36,7 @@ void SynchronizedQueue<T>::put(const T& data)
 template<typename T>
 T SynchronizedQueue<T>::get()
 {
+    // This is shite, cause it hogs cpu resources. It just keeps locking / unlocking the mutex.
     for(;;)
     {
         std::unique_lock<std::mutex> lck(myMutex);
